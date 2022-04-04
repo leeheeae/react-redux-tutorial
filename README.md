@@ -61,4 +61,25 @@ const store = createStore(rootReducer);
 
 -   크롬 확장 프로그램에서 Redux DevTools를 검색하여 설치
 -   `npm i redux-devtools-extension` 을 설치
--   `composeWithDevTools`를 import 한 후 store에 파라미터로 넘겨줌
+-   `composeWithDevTools()`를 import 한 후 store에 파라미터로 넘겨줌
+
+### 컨테이너 컴포넌트 만들기
+
+> 리덕스 스토어와 연동된 컴포넌트를 컨테이너 컴포넌트라고 부름
+> 리덕스 스토어에 접근하여 원하는 상태를 받아오고, 또 액션도 디스패치해줄 예정
+
+-   src 디렉토리에 containers 디렉토리 생성, 그 안에 컴포넌트 파일 생성
+-   리덕스와 연동하기 위해 `react-redux`에서 제공하는 `connect` 함수를 사용
+    -   `connect(mapStateToProps, mapDispatchToProps)(연동할 컴포넌트)`
+    -   *mapStateToProps*는 리덕스 스토어 안의 상태를 컴포넌트의 props로 넘겨주기 위해 설정하는 함수
+    -   *mapDispatchToProps*는 액션 생성 함수를 컴포넌트의 props로 넘겨주기 위해 사용하는 함수
+    -   connect 함수를 호출하고 나면 또 다른 함수를 반환, 반환된 함수에 컴포넌트를 파라미터로 넣어주면 리덕스와 연동된 컴포넌트가 만들어짐
+    ```javascript
+    const makeContainer = connect(mapStateToProps, mapDispatchToProps);
+    makeContainer(타깃 컴포넌트)
+    ```
+    -   `mapStateToProps`와 `mapDispatchToProps`에서 반환되는 객체 내부의 값들은 컴포넌트의 props로 전달
+    -   `mapStateToProps`는 state를 파라미터로 받아오며, 이 값은 현재 스토어가 지니고 있는 상태를 가리킴
+    -   `mapDispatchToProps`는 store의 내장 함수 dispatch를 파라미터로 받아옴
+-   Container 파일에 만들어둔 액션 객체를 불러온다.
+-   App.js에 컨테이너 컴포넌트를 불러온다.
