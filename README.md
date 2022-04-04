@@ -31,3 +31,6 @@
     - export default 키워드를 사용하여 함수를 내보내줌
         - export default는 단 한 개만 내보낼 수 있음
         - export는 여러개를 내보낼 수 있음
+4. 루트 리듀서 만들기
+    - 리덕스에서 제공하는 `combineReducers`라는 유틸 함수를 사용하면 쉽게 처리할 수 있음
+    - modules 디렉토리에 index.js 파일을 만들고 그 안에 코드 작성
