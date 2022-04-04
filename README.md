@@ -70,16 +70,24 @@ const store = createStore(rootReducer);
 
 -   src 디렉토리에 containers 디렉토리 생성, 그 안에 컴포넌트 파일 생성
 -   리덕스와 연동하기 위해 `react-redux`에서 제공하는 `connect` 함수를 사용
+
     -   `connect(mapStateToProps, mapDispatchToProps)(연동할 컴포넌트)`
     -   *mapStateToProps*는 리덕스 스토어 안의 상태를 컴포넌트의 props로 넘겨주기 위해 설정하는 함수
     -   *mapDispatchToProps*는 액션 생성 함수를 컴포넌트의 props로 넘겨주기 위해 사용하는 함수
     -   connect 함수를 호출하고 나면 또 다른 함수를 반환, 반환된 함수에 컴포넌트를 파라미터로 넣어주면 리덕스와 연동된 컴포넌트가 만들어짐
+
     ```javascript
     const makeContainer = connect(mapStateToProps, mapDispatchToProps);
     makeContainer(타깃 컴포넌트)
     ```
+
     -   `mapStateToProps`와 `mapDispatchToProps`에서 반환되는 객체 내부의 값들은 컴포넌트의 props로 전달
     -   `mapStateToProps`는 state를 파라미터로 받아오며, 이 값은 현재 스토어가 지니고 있는 상태를 가리킴
     -   `mapDispatchToProps`는 store의 내장 함수 dispatch를 파라미터로 받아옴
+    -   `mapStateToProps`와 `mapDispatchToProps`를 미리 선언해놓고 작성을 해도 되지만 connect 함수 내부에 익명 함수형태로 선언해도 문제가 되지 않음
+    -   리덕스에서 제공하는 bindActionCreators 유틸 함수를 사용하면 좀 더 간편하게 작성 가능
+    -   mapDispatchToProps에 해당하는 파라미터를 함수 형태가 아닌 액션 생성 함수로 이루어진 객체 형태로 넣어주는 방식도 있음
+        -   두 번째 파라미터를 객체 형태로 넣어주면 connect 함수가 내부적으로 bindActionCreators 작업을 대신 해줌
+
 -   Container 파일에 만들어둔 액션 객체를 불러온다.
 -   App.js에 컨테이너 컴포넌트를 불러온다.
