@@ -3,8 +3,6 @@
 **사용프로그램**
 `react`, `redux`, `react-redux`
 
-### 카운터 컴포넌트 만들기
-
 #### 리덕스 관련 코드 작성 방식
 
 1. 액션 타입, 액션 생성 함수, 리듀서 코드를 구분하여 각 디렉토리에 작성하는 방식
@@ -34,3 +32,33 @@
 4. 루트 리듀서 만들기
     - 리덕스에서 제공하는 `combineReducers`라는 유틸 함수를 사용하면 쉽게 처리할 수 있음
     - modules 디렉토리에 index.js 파일을 만들고 그 안에 코드 작성
+
+### 리액트 애플리케이션에 리덕스 적용하기
+
+> 스토어를 만들고 리액트 애플리케이션에 리덕스를 적용하는 작업은 src 디렉토리의 index.js에서 이루어짐
+
+#### 1. 스토어 만들기
+
+```javascript
+//src/index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore } from "redux";
+import "./index.css";
+import App from "./App";
+import rootReducer from "./modules";
+
+const store = createStore(rootReducer);
+```
+
+#### 2. Provider 컴포넌트를 사용하여 프로젝트에 리덕스 적용하기
+
+-   App 컴포넌트를 react-redux에서 제공하는 Provider 컴포넌트로 감싸줌
+-   이 컴포넌트를 사용할 때는 store를 props로 전달해 주어야함
+
+#### 3. Redux DevTools의 설치 및 적용
+
+-   크롬 확장 프로그램에서 Redux DevTools를 검색하여 설치
+-   `npm i redux-devtools-extension` 을 설치
+-   `composeWithDevTools`를 import 한 후 store에 파라미터로 넘겨줌
