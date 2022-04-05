@@ -1,4 +1,4 @@
-import { createAction, handleAction } from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 
 //액션 타입
 const CHANGE_INPUT = 'todos/CHANGE_INPUT';
@@ -39,7 +39,7 @@ const initialState = {
 
 //리듀서 함수
 
-const todos = handleAction(
+const todos = handleActions(
   {
     [CHANGE_INPUT]: (state, { payload: input }) => ({
       ...state,

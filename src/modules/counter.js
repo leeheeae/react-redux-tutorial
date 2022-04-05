@@ -1,4 +1,4 @@
-import { createAction, handleAction } from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 
 //액션타입 정의
 const INCREASE = 'counter/INCREASE';
@@ -14,7 +14,7 @@ const initialState = {
 };
 
 //리듀서 함수
-const counter = handleAction(
+const counter = handleActions(
   {
     [INCREASE]: (state, action) => ({ number: state.number + 1 }),
     [DECREASE]: (state, action) => ({ number: state.number - 1 }),

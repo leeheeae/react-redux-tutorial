@@ -1,7 +1,7 @@
 # React Redux 사용해보기
 
 **사용프로그램**
-`react`, `redux`, `react-redux`
+`react`, `redux`, `react-redux`, `redux-devtools-extension`, `redux-actions`
 
 #### 리덕스 관련 코드 작성 방식
 
@@ -114,3 +114,21 @@ const store = createStore(rootReducer);
      `[INCREASE]: (state, action) => ({ number: state.number + 1 })`
    - 두 번째 파라미터에는 초기 상태를 넣어줌
    - 파라미터로 받아온 값을 객체안에 넣을 때 원하는 이름으로 넣는 것이 아닌 `action.payload`라는 이름을 공통적으로 넣는 것
+
+### redux Hooks를 사용하여 컨테이너 컴포넌트 만들기
+
+#### useSelect
+
+- connect함수를 사용하지 않고 useSelect를 이용하여 리덕스의 상태를 조회할 수 있음
+- `const 결과 = useSelector(상태 선택 함수)`
+- mapStateToProps와 형태가 똑같음
+- useSelector로 값을 조회하고 해당 컴포넌트에게 프롭스로 넘겨줌
+
+#### useDispatch
+
+- 컴포넌트 내부에서 스토어의 내장 함수 dispatch를 사용할 수 있게 해줌
+
+```javascript
+const dispatch = useDispatch();
+dispatch({ type: 'SAMPLE_ACTION' });
+```
