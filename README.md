@@ -132,3 +132,17 @@ const store = createStore(rootReducer);
 const dispatch = useDispatch();
 dispatch({ type: 'SAMPLE_ACTION' });
 ```
+
+- useCallback을 이용하여 성능을 최적화시킴
+
+#### useStore
+
+- 컴포넌트 내부에서 리덕스 스토어 객체를 직접 사용할 수 있다.
+
+```javascript
+const store = useStore();
+store.dispatch({ type: 'SAMPLE_ACTION' });
+store.getState();
+```
+
+- 컴포넌트에서 정말 어쩌다가 스토어에 직접 접근해야 하는 상황에만 사용해야함
